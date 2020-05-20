@@ -1,16 +1,28 @@
 // http://ionicframework.com/docs/theming/
-
-
-// App Global Sass
+// App Shared Imports
 // --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
+
+// global styles
+
 //
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+
+  
+  // card style
+  .card {
+    background: #FFF;
+    border-radius: 2rem; //ทำให้ ion-card ขอบโค้ง
+   //margin: 10px 0;
+   // width: 100%; //ทำให้ card เต็มพื้นที่
+    box-shadow: 0 0 1px rgba(86, 61, 124, 0.2), 0 2px 4px rgba(86, 61, 124, 0.15);
+  }
+
+  .item-ios{
+
+    background-color:  rgb(255, 255, 255);
+   }
+   .item-md{
+
+    background-color:  rgb(255, 255, 255);
+   }
+      
+  

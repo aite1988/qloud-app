@@ -35,6 +35,27 @@
   <!-- Ionic's root component and where the app will load -->
   <ion-app></ion-app>
 
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA7EqHMluzun_X6PaLq7f6bvHK8ORmEm8w",
+    authDomain: "taxi-delivery-a031b.firebaseapp.com",
+    databaseURL: "https://taxi-delivery-a031b.firebaseio.com",
+    projectId: "taxi-delivery-a031b",
+    storageBucket: "taxi-delivery-a031b.appspot.com",
+    messagingSenderId: "916956338294",
+    appId: "1:916956338294:web:a1638d6f6d5d3e6c62a757"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
   <!-- The polyfills js is generated during the build process -->
   <script src="build/polyfills.js"></script>
 
@@ -45,5 +66,6 @@
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
 
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC4j4R5tEsb_eC4t3eLQikoXf1CpByjDI"></script>
 </body>
 </html>

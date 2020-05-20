@@ -15,6 +15,7 @@ $app-direction: ltr;
 @import "ionic.globals";
 
 
+
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
@@ -34,12 +35,34 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
+  tabsbar:#ffffff,
+  tab-active:#b82726,
+  navbar: #b82657,
+  primary:#b82726,
+  app-background:rgb(3, 176, 189),
+  secondary:  #414143 ,
+  color3:  #54223d  ,
+  color4:  #595959 ,
+  color5:  #f5ba1e ,
+  color6:  #de6926  ,
   danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  light:      #ffffff,
+  dark:       #222,
+  button2:  #ff812d,
+  button3:  #ff5e2d,
+  green:  #04ad50,
+  yellow:  #dbd800,
+  red:  #750404,
 );
+
+$app-background: red;
+$background-color: rgb(248, 248, 248);
+$picker-ios-background-color:rgb(252, 252, 252);
+$background-color-picker: rgba(255, 255, 255, 1);
+$toolbar-background: rgb(255, 255, 255);
+$tabs-ios-border: transparent;
+$tabs-ios-tab-icon-size: 36px;
+
 
 
 // App iOS Variables
@@ -86,3 +109,8 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+@import "custom/tabs";
+@import "custom/icons";
+@import "custom/button";
+@import "animation";
+@import "tabs";
