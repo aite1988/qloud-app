@@ -1,0 +1,278 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<backdrop *ngIf="show_popup"></backdrop>
+<ion-header no-boder>
+
+  <ion-navbar color="navbar">
+    
+    <ion-title>รายละเอียดงาน</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-bounce >
+      <!-- Loading Widget-->
+      <div *ngIf="initLoading" style="z-indexz:9999;background-color:white;height:100%;touch-action: none;">
+        <ion-grid  >
+          <ion-row justify-content-center align-items-center style="padding-top:80%">
+            <img src="./assets/loading/loading.svg" style="width:60px"/>
+             <!-- <ion-spinner name="crescent"></ion-spinner>  -->
+            </ion-row>
+          </ion-grid>
+        </div>
+         <!-- End Loading Widget-->
+
+         <div style="padding-bottom:100px">
+  <ion-card *ngIf="!initLoading" class="animated slow1 fadeIn">
+    <ion-list>
+
+      <ion-list-header>
+        ข้อมูลทั่วไป
+      </ion-list-header>
+    <ion-item>
+      <ion-icon name="md-code" item-start></ion-icon>
+      <p>
+        <strong>เลขที่งาน</strong>
+        {{jobDat.app_id}}
+      </p>
+
+    </ion-item>
+    <ion-item>
+      <ion-icon name="md-code" item-start></ion-icon>
+      <p>
+        <strong>วันที่บันทึก</strong>
+        {{jobDat.date_app}}
+      </p>
+
+    </ion-item>
+    <ion-item>
+      <ion-icon name="md-code" item-start></ion-icon>
+      <p>
+        <strong>วัน เวลาที่นัดหมาย</strong>
+        {{jobDat.appoint_date}}  {{jobDat.appoint_time}}
+      </p>
+
+    </ion-item>
+    <ion-item>
+      <ion-icon name="md-code" item-start></ion-icon>
+      <p>
+        <strong>ชื่อลูกค้า</strong>
+        {{jobDat.cus_name}} {{jobDat.cus_surname}}
+      </p>
+
+    </ion-item>
+    <ion-item>
+      <ion-icon name="md-code" item-start></ion-icon>
+      <p>
+        <strong>เบอร์โทรลูกค้า</strong>
+        {{jobDat.cus_tel}}
+      </p>
+      <button ion-button icon-start item-end (click)="call(jobDat.cus_tel)">
+        <ion-icon name="ios-call"></ion-icon>
+         โทร
+      </button>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="md-code" item-start></ion-icon>
+      <p text-wrap>
+        <strong>ที่อยู่</strong>
+        {{jobDat.cus_address}}
+      </p>
+
+    </ion-item>
+    <ion-item>
+      <ion-icon name="md-code" item-start></ion-icon>
+      <p text-wrap>
+        <strong>รายละเอียดจุดนัดหมาย</strong>
+        {{jobDat.appoint_place}} {{jobDat.appoint_detail}}
+      </p>
+
+    </ion-item>
+
+  </ion-list>
+
+
+
+  </ion-card>
+
+  <ion-card *ngIf="!initLoading" class="animated slow1 fadeIn" >
+    <ion-list>
+
+      <ion-list-header>
+        ข้อมูลรถ
+      </ion-list-header>
+      <ion-item>
+        <ion-icon name="md-code" item-start></ion-icon>
+        <p text-wrap>
+          <strong>ประเภทรถ</strong>
+          {{jobDat.car_type}}
+        </p>
+  
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="md-code" item-start></ion-icon>
+        <p text-wrap>
+          <strong>ปีรถ</strong>
+          {{jobDat.car_year}}
+        </p>
+  
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="md-code" item-start></ion-icon>
+        <p text-wrap>
+          <strong>ยี่ห้อรถ</strong>
+          {{jobDat.car_brand}}
+        </p>
+  
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-code" item-start></ion-icon>
+        <p text-wrap>
+          <strong>รุ่นรถ</strong>
+          {{jobDat.car_series}}
+        </p>
+  
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-code" item-start></ion-icon>
+        <p text-wrap>
+          <strong>เกียร์รถ</strong>
+          {{jobDat.car_gear}}
+        </p>
+  
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-code" item-start></ion-icon>
+        <p text-wrap>
+          <strong>รายละเอียดรุ่นรถ</strong>
+          {{jobDat.car_detail}}
+        </p>
+  
+      </ion-item>
+
+    </ion-list>
+  </ion-card>
+
+
+  <ion-card >
+    <ion-list>
+
+      <ion-list-header>
+        รายละเอียดสินเชื่อ
+      </ion-list-header>
+      <ion-item>
+        <ion-icon name="md-code" item-start></ion-icon>
+        <p text-wrap>
+          <strong>ประเภทสินเชื่อ</strong>
+          {{jobDat.con_type}}
+        </p>
+  
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="md-code" item-start></ion-icon>
+        <p text-wrap>
+          <strong>วงเงินสินเชื่อ</strong>
+          {{jobDat.credit_app}} บาท
+        </p>
+  
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="md-code" item-start></ion-icon>
+        <p text-wrap>
+          <strong>จำนวนงวด</strong>
+          {{jobDat.credit_installment}} งวด
+        </p>
+  
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card *ngIf="signature">
+    <ion-title>ลายเซ็นต์ผู้รับ</ion-title>
+   <img [src]="signature" />
+  </ion-card>
+
+
+<ion-row  *ngIf="mapsShow"  justify-content-center align-items-center>
+  <ion-col col-12 col-sm12 col-md-12 col-lg-9 col-xl-6 >
+
+<ion-row  style="position: absolute;width:97%;z-index:999999" *ngIf="mapsShow">
+
+  <ion-col>
+    <ion-card style="border-radius:0px">
+  <ion-card-content>
+    <h3>จุดนัดหมาย : {{jobDat.appoint_detail}} </h3>
+  </ion-card-content>
+
+  </ion-card>
+
+</ion-col>
+</ion-row>
+<ion-card>
+  <iframe  width="100%" height="450" frameborder="0" style="margin-top:-100px;border:0;"
+  [src]="mapsShow" allowfullscreen></iframe>
+</ion-card>
+
+</ion-col>
+</ion-row>
+</div>
+
+
+</ion-content>
+
+
+
+<ion-footer>
+	<ion-grid>
+    <div *ngIf="status=='2A'">
+
+    
+		<ion-row justify-content-center text-center align-items-center>
+			<ion-col>
+				<button color="green" ion-button  block icon-start item-end (click)="confirmJob()">
+				  ยืนยันรับงาน
+				 </button>
+			</ion-col>
+    </ion-row>
+  </div>
+  
+    <div *ngIf="status=='3A'" >
+    <ion-row  justify-content-center text-center align-items-center>
+			<ion-col>
+        <button ion-button color="primary2" ion-button  block icon-start item-end (click)="gotoJobDetailAddMore()">
+				  เพิ่มข้อมูล
+				 </button>
+
+      </ion-col>
+      <ion-col>
+        <button ion-button color="primary2" ion-button  block icon-start item-end (click)="gotoPhotoEdit()">
+				  เพิ่มรูปภาพ
+				 </button>
+      </ion-col>
+
+    </ion-row>
+    <ion-row justify-content-center text-center align-items-center>
+
+			<ion-col col-4>
+       <!-- <a ion-button block tapable [href]="mapsDirection">เปิดแผนที่</a> -->
+       <button ion-button block (click)="gotoMapsView()">เปิดแผนที่</button>
+      </ion-col>
+      <ion-col col-8>
+				<button ion-button color="green" ion-button  block icon-start item-end (click)="presentPopup('confirm')">
+				  ปิดสำเร็จงาน
+				 </button>
+			</ion-col>
+    </ion-row>
+  </div>
+  </ion-grid>
+
+	</ion-footer>

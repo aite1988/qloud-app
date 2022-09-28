@@ -1,0 +1,84 @@
+// http://ionicframework.com/docs/theming/
+// App Shared Imports
+// --------------------------------------------------
+
+// global styles
+
+//
+//import for native refresh
+//@import '../../node_modules/@ionic-native/ion-refresh-native/dist/scss/ion-refresh-native';
+  // card style
+  .modal-fullscreen {
+    .modal-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        margin-top:0px;
+    }
+}
+
+.modal-fullscreen-80 {
+  .modal-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin-top:20%;
+  }
+}
+
+.modal-fullscreen-50 {
+  .modal-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin-top:50%;
+  }
+}
+
+.modal-fullscreen-30 {
+  .modal-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin-top:70%;
+  }
+}
+
+
+  .card {
+    background: #FFF;
+    border-radius: 2rem; //ทำให้ ion-card ขอบโค้ง
+   //margin: 10px 0;
+   // width: 100%; //ทำให้ card เต็มพื้นที่
+    box-shadow: 0 0 1px rgba(86, 61, 124, 0.2), 0 2px 4px rgba(86, 61, 124, 0.15);
+  }
+
+  ion-textarea
+  {
+    border: 0.5px solid gray;
+    padding:10px;
+  border-radius: 10px;
+  }
+
+  .item-ios{
+
+    background-color:  rgb(255, 255, 255);
+   }
+   .item-md{
+
+    background-color:  rgb(255, 255, 255);
+   }
+      
+  

@@ -1,1 +1,32 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content" side="left">
+    <ion-header>
+      <ion-toolbar>
+        <img class="logo animated fadeInDown" src="./assets/imgs/qloudapp-menu.jpg">
+      </ion-toolbar>
+    </ion-header>
+    <!-- Side Menu Content Options -->
+    <ion-content>
+      <ion-list no-lines>
+        <!-- <ion-item menuClose *ngFor="let page of pages; let i = index" (click)="openPage(page.COMPONENT)">
+          <ion-icon ion-text color="ash" [name]="page.ICON" item-left></ion-icon>
+          <span ion-text color="ash">{{'SIDEBAR_List.' + i + '.NAME' | translate}}</span>
+        </ion-item> -->
+        <ion-item menuClose (click)="openSetting()">
+          <ion-icon ion-text color="ash" name="custom-settings" item-left></ion-icon>
+          <span ion-text color="ash">Settings</span>
+        </ion-item>
+      <!-- <ion-item menuClose (click)="openHomeApp()">
+          <ion-icon ion-text color="ash" name="custom-home2" item-left></ion-icon>
+          <span ion-text color="ash">Open HomeApp</span>
+        </ion-item> -->
+       <!--    <ion-item menuClose (click)="cancelHomeApp()">
+          <ion-icon ion-text color="ash" name="md-close" item-left></ion-icon>
+          <span ion-text color="ash">Cancel Home App</span>
+        </ion-item> -->
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

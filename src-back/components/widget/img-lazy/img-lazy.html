@@ -1,0 +1,13 @@
+	<!--
+    How To Use
+    Example 
+    <img-lazy src="{{item.src}}"></img-lazy> -->
+
+<ion-grid>
+    <img class="img-loading animated slow1 fadeIn" src="./assets/loading/photoloading.png" *ngIf="!loaded" [ngStyle]="sizeLoading()">
+    <img class="animated slow1 fadeIn" [src]="src" (load)="onloading($event)" [ngStyle]="sizeImg()">
+    
+    
+</ion-grid>
+
+

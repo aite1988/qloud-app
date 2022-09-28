@@ -24,6 +24,23 @@ $app-direction: ltr;
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
 
+$refresher-border-color:transparent;
+$font-family-base: "Ormont_Light";
+$font-family-ios-base: $font-family-base;
+$font-family-md-base: $font-family-base;
+$font-family-wp-base: $font-family-base;
+//$loading-ios-text-color:white;
+//$loading-md-text-color:white;
+$loading-md-max-height:100%;
+
+@font-face {
+  font-family: 'Ormont_Light';
+  //src:url('../assets/fonts/Sarabun-Light.ttf') format('truetype');
+  src:url('../assets/fonts/SukhumvitSet-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  
+ }
 
 
 // Named Color Variables
@@ -35,24 +52,31 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  tabsbar:#ffffff,
-  tab-active:#b82726,
-  navbar: #b82657,
-  primary:#b82726,
+  calculator:#00a7dd,
+  tabsbar:#11bada,
+  tab-active:#11bada,
+  navbar: #11bada,
+  primary:#11bada,
+  primary2:#de6926,
   app-background:rgb(3, 176, 189),
-  secondary:  #414143 ,
-  color3:  #54223d  ,
+  secondary:  #e0e0e0 ,
+  color3:  #000000  ,
   color4:  #595959 ,
   color5:  #f5ba1e ,
   color6:  #de6926  ,
   danger:     #f53d3d,
   light:      #ffffff,
+  gray:      #7e7e7e,
   dark:       #222,
   button2:  #ff812d,
   button3:  #ff5e2d,
   green:  #04ad50,
   yellow:  #dbd800,
   red:  #750404,
+  ash:        #efefef,
+  star:  #ffbc37,
+  home:  #980470,
+  hide:  #000d70,
 );
 
 $app-background: red;
@@ -64,6 +88,16 @@ $tabs-ios-border: transparent;
 $tabs-ios-tab-icon-size: 36px;
 
 
+$orange: #11bada;
+$ash-light: #efefef;
+
+$radio-ios-color-on: $orange;
+$alert-ios-button-text-color: $orange;
+$toggle-ios-height: 20px;
+
+$radio-md-color-on: $orange;
+$alert-md-button-text-color: $orange;
+$toggle-md-handle-height: 20px;
 
 // App iOS Variables
 // --------------------------------------------------

@@ -1,0 +1,33 @@
+<ion-header no-boder>
+
+  <ion-navbar color="navbar">
+    <ion-title>
+      ลายเซ็นต์ผู้รับ
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-start (click)="ionViewDidLoad()">
+        <ion-icon name="ios-refresh-circle-outline"></ion-icon>
+         ล้าง
+      </button>
+      <button ion-button icon-start (click)="saveCanvasImage()">
+        <ion-icon name="md-download"></ion-icon>
+         บันทึก
+      </button>
+      </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-bounce>
+    <div>
+   
+      <canvas #imageCanvas (touchstart)="startDrawing($event)" (touchmove)="moved($event)"></canvas>
+  
+      <button ion-button full (click)="saveCanvasImage()">บันทึกลายเซ็นต์</button>
+      <button ion-button full (click)="ionViewDidLoad()">เริ่มเซ็นต์ใหม่</button>
+
+    </div>
+  
+    
+  </ion-content>

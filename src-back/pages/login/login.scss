@@ -1,0 +1,42 @@
+page-login {
+
+  .login-header{
+    position:absolute;
+    background:linear-gradient(180deg, rgba(86, 191, 158, 1)  0%, rgba(86, 191, 158, 0.5) 52%, rgba(24, 105, 160, 1)92%);
+    height:100%;
+    width:100%;
+    z-index:-1;
+   // position: sticky;top: 0;left: 0;right: 0;z-index:9999;
+}
+
+    .item {
+      background-color: hsla(89,43%,51%,0);
+    }
+    .item-inner, ion-item {
+      border-bottom-color: transparent !important;
+      box-shadow: none !important;
+    }
+    .btn-round{
+     border-radius: 5px;
+      margin-left:-10px;
+      padding: 50px 50px;
+  }
+  ion-input {
+    text-align:center;
+      background-color: white;
+      border-radius: 5px;
+      border:0px solid color($colors,primary);
+      padding-top:0px;
+      margin: -10px 0 0 0;
+      input{
+        text-align:center;
+      }
+    }
+
+}
+
+
+
+
+
+

@@ -1,0 +1,411 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-boder>
+
+  <ion-navbar color="navbar">
+    <ion-title>เพิ่มข้อมูล</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-bounce (ionScroll)="isScrolling($event)">
+
+  <!-- Loading Widget-->
+  <div *ngIf="initLoading" style="z-indexz:9999;background-color:white;height:100%;touch-action: none;">
+    <ion-grid>
+      <ion-row justify-content-center align-items-center style="padding-top:80%">
+        <img src="./assets/loading/loading.svg" style="width:60px" />
+        <!-- <ion-spinner name="crescent"></ion-spinner>  -->
+      </ion-row>
+    </ion-grid>
+  </div>
+  <!-- End Loading Widget-->
+   
+
+  <div style="position: sticky;top: 0;left: 0;right: 0;z-index:9999;" padding>
+
+
+   
+
+
+    <ion-segment  class="SwipedTabs-tabs" *ngIf="headerShow" style="background-color:white">
+      
+      <ion-segment-button  *ngFor='let tab of tabs ; let i = index ' value="IngoreMe" (click)="selectTab(i)"
+      [ngClass]='{ "SwipedTabs-activeTab" : ( this.SwipedTabsSlider  && ( this.SwipedTabsSlider.getActiveIndex() === i )) }' >
+        {{tab}}
+      </ion-segment-button>
+    </ion-segment>
+    <ion-segment  class="SwipedTabs-tabs"  *ngIf="!headerShow">
+      
+      <ion-segment-button  *ngFor='let tab of tabs ; let i = index ' value="IngoreMe" (click)="selectTab(i)"
+      [ngClass]='{ "SwipedTabs-activeTab" : ( this.SwipedTabsSlider  && ( this.SwipedTabsSlider.getActiveIndex() === i )) }' >
+        {{tab}}
+      </ion-segment-button>
+    </ion-segment>
+    
+  
+    <!-- here is our dynamic line  "indicator"-->
+    <div id='indicator-detail-add' class="SwipedTabs-indicatorSegment" [ngStyle]="swipedStyle()"></div>
+  </div>
+
+    <ion-slides mode='md' #SwipedTabsSlider  (ionSlideDrag)="animateIndicator($event)"
+                (ionSlideWillChange)="updateIndicatorPosition()"
+                (ionSlideDidChange)="updateIndicatorPosition()"
+                (pan)="updateIndicatorPosition()"
+                [pager]="false"
+  
+          >
+          <ion-slide #tabs1>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==0">
+        
+              <ion-grid padding style="padding-top:30px" >
+                <ion-row justify-content-center align-items-center>
+                  
+                    <img class="animated slow1 fadeIn" src="./assets/icon/stick-man-1.svg" style="filter: opacity(30%);width:100px;padding-bottom: 15px;" />
+        
+                  </ion-row>
+                  <ion-row justify-content-center align-items-center>
+                  
+                    <h2>ข้อมูลลูกค้า</h2>
+        
+                  </ion-row>
+               
+                  
+                </ion-grid>
+                <ion-card mode="ios">
+                  <ion-list mode="ios">
+            
+
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>เลขที่บัตรประชาชนลูกค้า</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_card_id"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>ผู้ครอบครองรถ</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_car_owner"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>อาชีพลูกค้า</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_career"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>ลักษณะบ้าน</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_home_type"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>กรรมสิทธิ์ในบ้าน</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_home_owner"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>เลขที่ใบขับขี่</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_tcard_id"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>ประเภทใบขับขี่</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_tcard_type"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>ออกให้โดย</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_tcard_issue"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>ตำแหน่งงาน</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_career_position"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>รายได้</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_income"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>อายุงาน</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_career_time"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>ที่อยู่บริษัท</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_career_address"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>ที่อยู่ตามทะเบียนบ้าน</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_address"></ion-input>
+                    </ion-item>
+            
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>จังหวัด</ion-label>
+                      <ion-select [(ngModel)]="jobDat.cus_address_prov" (ionChange)="filterDiCus(jobDat.cus_address_prov)">
+                        <ion-option *ngFor="let item of provinceDatCus" value="{{item}}">{{item}}</ion-option>
+                      </ion-select>
+                    </ion-item>
+            
+            
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>อำเภอ</ion-label>
+                      <ion-select [(ngModel)]="jobDat.cus_address_di" (ionChange)="filterZipcodeCus(jobDat.cus_address_di)">
+                        <ion-option *ngFor="let item of diDatCus" value="{{item.di}}">{{item.di}}</ion-option>
+                      </ion-select>
+                    </ion-item>
+            
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>เลขไปรษณีย์</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_address_zipcode"></ion-input>
+                    </ion-item>
+            
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>ที่อยู่ส่งเอกสาร</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_send_address"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>สถานภาพ</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_status"></ion-input>
+                    </ion-item>
+                    <ion-item mode="md" style="width:95%" >
+                      <ion-label floating>คู่สมรส</ion-label>
+                      <ion-input type="text" [(ngModel)]="jobDat.cus_mate"></ion-input>
+                    </ion-item>
+    <ion-item></ion-item>
+                  </ion-list>
+                </ion-card>
+
+  </div>
+      </ion-slide>
+      <ion-slide #tabs2>
+        <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==1">
+          <ion-grid padding style="padding-top:30px" >
+            <ion-row justify-content-center align-items-center>
+              
+                <img class="animated slow1 fadeIn" src="./assets/icon/stick-man-2.svg" style="filter: opacity(30%);width:100px;padding-bottom: 15px;" />
+    
+              </ion-row>
+              <ion-row justify-content-center align-items-center>
+              
+                <h2>ข้อมูลผู้ค้ำ</h2>
+    
+              </ion-row>
+           
+              
+            </ion-grid>
+            <ion-card mode="ios">
+              <ion-list mode="ios">
+
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>ชื่อผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_name"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>นามสกุลผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_surname"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>เลขที่บัตรประชาชนผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_card_id"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>เบอร์โทรผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_tel"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>ความสัมพันธ์</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_relation"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>อาชีพผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_career"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>ลักษณะบ้านผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_home_type"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>กรรมสิทธิ์ในบ้านผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_home_owner"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>เลขที่ใบขับขี่ผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_tcard_id"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>ประเภทใบขับขี่ผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_tcard_type"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>ออกให้โดย</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_tcard_issue"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>ตำแหน่งงานผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_career_position"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>รายได้ผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_income"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>อายุงานผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_career_time"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>ที่อยู่บริษัทผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_career_address"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>ที่อยู่ตามทะเบียนบ้านผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_address"></ion-input>
+                </ion-item>
+        
+        
+        
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>จังหวัด</ion-label>
+                  <ion-select [(ngModel)]="jobDat.sup_address_prov" (ionChange)="filterDiSup(jobDat.sup_address_prov)">
+                    <ion-option *ngFor="let item of provinceDatSup" value="{{item}}">{{item}}</ion-option>
+                  </ion-select>
+                </ion-item>
+        
+        
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>อำเภอ</ion-label>
+                  <ion-select [(ngModel)]="jobDat.sup_address_di" (ionChange)="filterZipcodeSup(jobDat.sup_address_di)">
+                    <ion-option *ngFor="let item of diDatSup" value="{{item.di}}">{{item.di}}</ion-option>
+                  </ion-select>
+                </ion-item>
+        
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>เลขไปรษณีย์</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_address_zipcode"></ion-input>
+                </ion-item>
+        
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>ที่อยู่ส่งเอกสารผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_send_address"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>สถานภาพผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_status"></ion-input>
+                </ion-item>
+                <ion-item mode="md" style="width:95%" >
+                  <ion-label floating>คู่สมรสผู้ค้ำ</ion-label>
+                  <ion-input type="text" [(ngModel)]="jobDat.sup_mate"></ion-input>
+                </ion-item>
+                <ion-item></ion-item>
+              </ion-list>
+            </ion-card>
+        
+        </div>
+
+      </ion-slide>
+
+      <ion-slide #tabs3>
+        <div *ngIf="this.SwipedTabsSlider.getActiveIndex()>1">
+          <ion-grid padding style="padding-top:30px" >
+            <ion-row justify-content-center align-items-center>
+              
+                <img class="animated slow1 fadeIn" src="./assets/icon/insurance.svg" style="filter: opacity(30%);width:100px;padding-bottom: 15px;" />
+    
+              </ion-row>
+              <ion-row justify-content-center align-items-center>
+              
+                <h2>ข้อมูลรถเพิ่มเติม</h2>
+    
+              </ion-row>
+           
+              
+            </ion-grid>
+
+
+            <ion-card mode="ios">
+              <ion-list mode="ios">
+
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>สีรถ</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_color"></ion-input>
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>เลขตัวถัง</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_body_number"></ion-input>
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>หมายเลขเครื่อง</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_engine_number"></ion-input>
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>จำนวนประตู</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_door_number"></ion-input>
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>ประเภทรถ</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_type_detail"></ion-input>
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>แรงม้า</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_hp"></ion-input>
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>จำนวนสูบ</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_engine_cylinder"></ion-input>
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>เลขไมล์</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_distance_mile"></ion-input>
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>น้ำหนักรถ</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_weight"></ion-input>
+        </ion-item>
+        <ion-item mode="ios" style="width:95%" >
+          <ion-label floating>สภาพรถ</ion-label>
+          <ion-textarea  rows="3" type="text" [(ngModel)]="jobDat.car_condition"></ion-textarea >
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>วันที่จดทะเบียน</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_register_date"></ion-input>
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>บริษัทประกัน</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_insurance"></ion-input>
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>วันหมดประกัน</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_insurance_expire"></ion-input>
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>สหกรณ์</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_cooperative"></ion-input>
+        </ion-item>
+        <ion-item mode="md" style="width:95%" >
+          <ion-label floating>ศูนย์วิทยุ</ion-label>
+          <ion-input type="text" [(ngModel)]="jobDat.car_radio_regis"></ion-input>
+        </ion-item>
+        <ion-item></ion-item>
+
+      </ion-list>
+    </ion-card>
+        </div>
+
+      </ion-slide>
+    </ion-slides>
+
+
+
+
+  <div style="padding-bottom:100px">
+   
+
+  
+
+
+  </div>
+
+</ion-content>
+
+
+
+<ion-footer>
+
+        <button color="green" ion-button block icon-start item-end (click)="confirmUpdate()">
+          บันทึก
+        </button>
+</ion-footer>

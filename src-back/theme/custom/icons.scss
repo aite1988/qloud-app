@@ -1,0 +1,80 @@
+ion-icon {
+    &[class*="custom-"] {
+       mask-size: contain;
+       mask-position: 50% 50%;
+       mask-repeat: no-repeat;
+  
+       width: 1em;
+       height: 1em;
+  
+    }
+    &[class*="power"] {
+      background: currentColor;
+      mask-image: url("../assets/icon/power_off.svg");
+ 
+   }
+   &[class*="announce"] {
+    background: currentColor;
+    mask-image: url("../assets/icon/announce.svg");
+
+ }
+ &[class*="menu2"] {
+  background: currentColor;
+  mask-image: url("../assets/icon/menu-2.svg");
+
+}
+&[class*="barchart"] {
+   background: currentColor;
+   mask-image: url("../assets/icon/bar-chart.svg");
+ 
+ }
+ &[class*="taxi"] {
+   background: currentColor;
+   mask-image: url("../assets/icon/taxi.svg");
+ 
+ }
+ &[class*="settings"] {
+  background: currentColor;
+  mask-image: url("../assets/icon/settings.svg");
+
+}
+&[class*="user"] {
+  background: currentColor;
+  mask-image: url("../assets/icon/user-2.svg");
+
+}
+&[class*="home"] {
+  background: currentColor;
+  mask-image: url("../assets/icon/home.svg");
+
+}
+&[class*="home2"] {
+  background: currentColor;
+  mask-image: url("../assets/icon/home2.svg");
+
+}
+&[class*="home3"] {
+  background: currentColor;
+  mask-image: url("../assets/icon/home3.svg");
+
+}
+
+&[class*="taxi2"] {
+  background: currentColor;
+  mask-image: url("../assets/icon/taxi2.svg");
+
+}
+
+
+
+
+
+   
+   
+  
+  
+  
+  
+  
+  
+  }

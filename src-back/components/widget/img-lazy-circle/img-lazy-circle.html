@@ -1,0 +1,7 @@
+	<!--
+    How To Use
+    Example 
+    <img-lazy src="{{item.src}}"></img-lazy> -->
+
+<img class="circle-picture animated slow1 fadeIn" src="./assets/loading/photoloading.png" *ngIf="!loaded" >
+<img class="circle-picture animated slow1 fadeIn" [src]="src" (load)="onloading($event)" [ngStyle]="sizeImg()">

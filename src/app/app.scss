@@ -5,24 +5,34 @@
 // global styles
 
 //
+//import for native refresh
+//@import '../../node_modules/@ionic-native/ion-refresh-native/dist/scss/ion-refresh-native';
+//lazy load
 
-  
-  // card style
-  .card {
-    background: #FFF;
-    border-radius: 2rem; //ทำให้ ion-card ขอบโค้ง
-   //margin: 10px 0;
-   // width: 100%; //ทำให้ card เต็มพื้นที่
-    box-shadow: 0 0 1px rgba(86, 61, 124, 0.2), 0 2px 4px rgba(86, 61, 124, 0.15);
+.menu-inner {
+  ion-toolbar {
+      text-align: center;
+      height: 160px;
+      img {
+          width: 100px;
+          height: 30%;
+          border-radius: 50%;
+          margin-top: 15%;
+          border: 1px solid #222;
+          box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.5);
+          margin-bottom: 10%;
+      }
   }
-
-  .item-ios{
-
-    background-color:  rgb(255, 255, 255);
-   }
-   .item-md{
-
-    background-color:  rgb(255, 255, 255);
-   }
-      
-  
+  .toolbar-background {
+      background: $orange;
+      border-width: 0px !important;
+  }
+  ion-content {
+      background: $orange;
+      .item {
+          background-color: transparent !important;
+          font-weight: 500 !important;
+          padding-left: 30px !important;
+      }
+  }
+}

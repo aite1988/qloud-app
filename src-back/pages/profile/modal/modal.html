@@ -1,0 +1,94 @@
+
+<ion-content style="" [ngStyle]="popupBodyTheme()" >
+  <ion-refresher  (ionPull)="dismissDelay()"
+  pullingText="Pull to refresh"
+  refreshingSpinner="circles"
+  >
+  </ion-refresher>
+  <div *ngIf="popup_select=='tel'" class="animated fadeInUpSpeed">
+    <ion-item style="border-radius:30px" no-lines>
+      <icon-circle icon='ios-call' color="rgb(0, 119, 255)" item-start></icon-circle>
+      <ion-label>
+        เบอร์โทรศัพท์
+      </ion-label>
+    
+      <button class="more-button" ion-button clear icon-only large item-end (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    
+    </ion-item>
+    <ion-list padding mode="md">
+      <ion-item mode="md">
+        <ion-label floating>เบอร์โทรศัพท์</ion-label>
+        <ion-input type="tel" pattern="\d*" [(ngModel)]="displayData.checkerData.tel"></ion-input>
+      </ion-item>
+      <ion-item mode="md">
+     
+        <button large item-end ion-button (click)="updateTel()"> ตกลง</button>
+      </ion-item>
+    
+
+    </ion-list>
+
+  </div>
+
+
+  <div *ngIf="popup_select=='v_id'" class="animated fadeInUpSpeed">
+    <ion-item style="border-radius:30px" no-lines>
+      <icon-circle icon='md-car' color="rgb(87, 104, 122)" item-start></icon-circle>
+      <ion-label>
+        ทะเบียนรถ
+      </ion-label>
+    
+      <button class="more-button" ion-button clear icon-only large item-end (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    
+    </ion-item>
+    <ion-list padding mode="md">
+      <ion-item mode="md">
+        <ion-label floating>ทะเบียนรถ</ion-label>
+        <ion-input  type="text" [(ngModel)]="displayData.checkerData.v_id"></ion-input>
+      </ion-item>
+      <ion-item mode="md">
+     
+        <button large item-end ion-button (click)="updateVid()"> ตกลง</button>
+      </ion-item>
+    
+
+    </ion-list>
+
+  </div>
+
+  <div *ngIf="popup_select=='logout'" class="animated fadeInUpSpeed">
+    <ion-item style="border-radius:30px" no-lines >
+      <icon-circle icon='md-log-out' color="rgb(177, 0, 9)" item-start></icon-circle>
+
+      <ion-label>
+        ออกจากระบบ
+      </ion-label>
+    
+      <button class="more-button" ion-button clear icon-only large item-end (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    
+    </ion-item>
+    <ion-grid >
+      <ion-row justify-content-center align-items-center style="height:300px;">
+ 
+          <button ion-button block round color="danger" (click)="logout()">ยืนยันออกจากระบบ</button>
+
+
+        </ion-row>
+      </ion-grid>
+
+
+  </div>
+   
+
+
+
+
+</ion-content>
+
+

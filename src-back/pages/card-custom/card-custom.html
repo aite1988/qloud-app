@@ -1,0 +1,21 @@
+<!--
+  Generated template for the CardCustomPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>card-custom</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #container>
+  <ion-card *ngFor="let item of getDat">
+    <img [defaultImage]="'./assets/loading/photoloading.png'" [lazyLoad]="item.cover_photo" [offset]="0" [scrollObservable]="loadAndScroll"/>
+  <ion-card-content>
+    ชื่อ {{item.res_name}}
+  </ion-card-content>
+  </ion-card>
+ 
+</ion-content>

@@ -1,0 +1,75 @@
+page-job-detail-photo {
+    .arrow-down{
+        width:70px;
+    }
+
+ .SwipedTabs-indicatorSegment
+    {	z-index:9999;
+      //  border-left: 27px solid transparent;
+     //   border-right: 27px solid transparent;
+     //   border-top: 15px solid #ff0000;
+        -webkit-transition: 0s all;
+        -moz-transition:  0s all;
+        -o-transition:  0s all;
+        transition:  0s all;
+        transform-origin: top 0 left 0;
+
+      position: relative;
+      top: -42px;
+
+    }
+
+    .SwipedTabs-tabs ion-segment-button
+    {
+      border:none !important;
+      color:rgb(109, 112, 109)!important;
+      background-color:white!important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+     .SwipedTabs-tabs ion-segment-button.SwipedTabs-activeTab
+    {
+       // color:blue !important;
+    }
+
+    .SwipedTabs-tabs
+    {
+        width: fit-content !important;
+    }
+
+     .toolbar *
+    {
+        margin: 0 !important;
+    }
+
+    .tabsContent .scroll-content
+    {
+        background-color: color($colors,primary2);
+        overflow-x: scroll !important;
+    }
+
+    .tabsContent
+    {
+        
+        height: 50px !important;
+    }
+
+    .segment-button
+    {
+        max-width: initial !important;
+        flex: auto !important;
+        width: initial !important;
+    }
+}
+
+.ios{
+    page-googleplay-tabs {
+        .SwipedTabs-indicatorSegment
+        {
+            position: relative;
+            top: 44px !important;
+        }
+
+    }
+}

@@ -1,0 +1,166 @@
+<!--
+  Generated template for the GoogleplayTabsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header  no-border>
+
+  <ion-navbar  color="primary2" >
+    <ion-title>อัพโหลดภาพ</ion-title>
+  </ion-navbar>
+   <ion-toolbar mode="ios" color="primary2" >
+      <ion-content  #MultiItemsScrollingTabs  class="tabsContent">
+        <ion-segment mode="ios" class="SwipedTabs-tabs"  >
+          <ion-segment-button  *ngFor='let tab of tabs ; let i = index ' id="tabTitle{{i}}" value="IngoreMe" (click)="selectTab(i)"
+          [ngClass]='{ "SwipedTabs-activeTab" : ( this.SwipedTabsSlider  && ( this.SwipedTabsSlider.getActiveIndex() === i || (  tabs.length -1 === i&& this.SwipedTabsSlider.isEnd()))) }' 
+          
+          >
+       <div style="width:20px;height:26px;" [ngStyle]="labelColor(tab.photo_check)" >{{tab.label}}</div>
+          
+        </ion-segment-button>
+      </ion-segment>
+      <!-- here is our dynamic line  "indicator"-->
+      <div id='indicator2' [ngStyle]="swipedStyle()" class="SwipedTabs-indicatorSegment"><img src="./assets/imgs/arrow-down3.svg" class="arrow-down"/></div>
+    </ion-content>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    
+      
+<ion-slides #SwipedTabsSlider  (ionSlideDrag)="animateIndicator($event)"
+    (ionSlideDidChange)="updateIndicatorPosition()"
+    (ionSlideWillChange)="scrollIndicatiorTab()"
+    (panend)="updateIndicatorPositionOnTouchEnd()"
+    (pan)="updateIndicatorPosition()"
+    [pager]="false"
+    [parallax]="true"
+    [slidesPerView]="1"
+    [speed]="300"
+    [zoom]="true"
+    direction="horizontal"
+>
+
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==0">
+            <img style="filter: grayscale(100%);opacity: 0.5" src="{{photo_sample.photo_car_front}}" *ngIf="!photo.photo_car_front"/>
+            <img-lazy src="{{url}}{{photo.photo_car_front}}" *ngIf="photo.photo_car_front"></img-lazy>
+         
+              <h1>รูปรถด้านหน้า </h1>
+              <button ion-button block (click)="uploadImage('photo_car_front','รูปรถด้านหน้า')">เพิ่มรูปภาพ</button>
+            </div>
+            </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==1">
+            <img style="filter: grayscale(100%);opacity: 0.5" src="{{photo_sample.photo_car_rear}}" *ngIf="!photo.photo_car_rear"/>
+            <img-lazy src="{{url}}{{photo.photo_car_rear}}" *ngIf="photo.photo_car_rear"></img-lazy>
+            <h1>รูปรถด้านหลัง </h1>
+            <button ion-button block (click)="uploadImage('photo_car_rear','รูปรถด้านหลัง')">เพิ่มรูปภาพ</button>
+        </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==2">
+            <img style="filter: grayscale(100%);opacity: 0.5" src="{{photo_sample.photo_car_ang_front}}" *ngIf="!photo.photo_car_ang_front"/>
+            <img-lazy src="{{url}}{{photo.photo_car_ang_front}}" *ngIf="photo.photo_car_ang_front"></img-lazy>
+            <h1>รูปรถมุมหน้า </h1>
+            <button ion-button block (click)="uploadImage('photo_car_ang_front','รูปรถมุมหน้า')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==3">
+            <img style="filter: grayscale(100%);opacity: 0.5" src="{{photo_sample.photo_car_ang_rear}}" *ngIf="!photo.photo_car_ang_rear"/>
+            <img-lazy src="{{url}}{{photo.photo_car_ang_rear}}" *ngIf="photo.photo_car_ang_rear"></img-lazy>
+            <h1>รูปรถมุมหลัง </h1>
+            <button ion-button block (click)="uploadImage('photo_car_ang_rear','รูปรถมุมหลัง')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==4">
+            <img style="filter: grayscale(100%);opacity: 0.5" src="{{photo_sample.photo_car_console}}" *ngIf="!photo.photo_car_console"/>
+            <img-lazy src="{{url}}{{photo.photo_car_console}}" *ngIf="photo.photo_car_console"></img-lazy>
+            <h1>รูปคอนโซลรถ </h1>
+            <button ion-button block (click)="uploadImage('photo_car_console','รูปคอนโซลรถ')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==5">
+            <img style="filter: grayscale(100%);opacity: 0.5" src="{{photo_sample.photo_car_front_seat}}" *ngIf="!photo.photo_car_front_seat"/>
+            <img-lazy src="{{url}}{{photo.photo_car_front_seat}}" *ngIf="photo.photo_car_front_seat"></img-lazy>
+            <h1>รูปเบาะหน้า </h1>
+            <button ion-button block (click)="uploadImage('photo_car_front_seat','รูปเบาะหน้า')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==6">
+            <img style="filter: grayscale(100%);opacity: 0.5" src="{{photo_sample.photo_car_rear_seat}}" *ngIf="!photo.photo_car_rear_seat"/>
+            <img-lazy src="{{url}}{{photo.photo_car_rear_seat}}" *ngIf="photo.photo_car_rear_seat"></img-lazy>
+            <h1>รูปรถเบาะหลัง </h1>
+            <button ion-button block (click)="uploadImage('photo_car_rear_seat','รูปรถเบาะหลัง')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==7">
+            <img style="filter: grayscale(100%);opacity: 0.5" src="{{photo_sample.photo_car_rear_cap}}" *ngIf="!photo.photo_car_rear_cap"/>
+            <img-lazy src="{{url}}{{photo.photo_car_rear_cap}}" *ngIf="photo.photo_car_rear_cap"></img-lazy>
+            <h1>รูปรถฝาท้าย </h1>
+            <button ion-button block (click)="uploadImage('photo_car_rear_cap','รูปรถฝาท้าย')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==8">
+            <img style="filter: grayscale(100%);opacity: 0.5" src="{{photo_sample.photo_car_engine}}" *ngIf="!photo.photo_car_engine"/>
+            <img-lazy src="{{url}}{{photo.photo_car_engine}}" *ngIf="photo.photo_car_engine"></img-lazy>
+            <h1>รูปเครื่องยนต์รถ </h1>
+            <button ion-button block (click)="uploadImage('photo_car_engine','รูปเครื่องยนต์รถ')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==9">
+            <img style="filter: grayscale(100%);opacity: 0.5" src="{{photo_sample.photo_home_one}}" *ngIf="!photo.photo_home_one"/>
+            <img-lazy src="{{url}}{{photo.photo_home_one}}" *ngIf="photo.photo_home_one"></img-lazy>
+            <h1>รูปบ้าน 1 </h1>
+            <button ion-button block (click)="uploadImage('photo_home_one','รูปบ้าน 1')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==10">
+            <img style="filter: grayscale(100%);opacity: 0.5" src="{{photo_sample.photo_home_two}}" *ngIf="!photo.photo_home_two"/>
+            <img-lazy src="{{url}}{{photo.photo_home_two}}" *ngIf="photo.photo_home_two"></img-lazy>
+            <h1>รูปบ้าน 2 </h1>
+            <button ion-button block (click)="uploadImage('photo_home_two','รูปบ้าน 2')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==11">
+            <img-lazy src="{{url}}{{photo.photo_other_one}}" *ngIf="photo.photo_other_one"></img-lazy>
+            <h1>รูปอื่นๆ 1 </h1>
+            <button ion-button block (click)="uploadImage('photo_other_one','รูปอื่นๆ 1')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==12">
+            <img-lazy src="{{url}}{{photo.photo_other_two}}" *ngIf="photo.photo_other_two"></img-lazy>
+            <h1>รูปอื่นๆ 2 </h1>
+            <button ion-button block (click)="uploadImage('photo_other_two','รูปอื่นๆ 2')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==13">
+            <img-lazy src="{{url}}{{photo.photo_other_three}}" *ngIf="photo.photo_other_three"></img-lazy>
+            <h1>รูปอื่นๆ 3 </h1>
+            <button ion-button block (click)="uploadImage('photo_other_three','รูปอื่นๆ 3')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+          <ion-slide>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()>13">
+            <img-lazy src="{{url}}{{photo.photo_other_four}}" *ngIf="photo.photo_other_four"></img-lazy>
+            <h1>รูปอื่นๆ 4 </h1>
+            <button ion-button block (click)="uploadImage('photo_other_four','รูปอื่นๆ 4')">เพิ่มรูปภาพ</button>
+          </div>
+          </ion-slide>
+
+    </ion-slides>
+</ion-content>

@@ -1,0 +1,145 @@
+<backdrop *ngIf="show_popup"></backdrop>
+<ion-header  no-border>
+
+
+	<ion-navbar color="primary2" >
+    <ion-title *ngIf="headerShow">
+      {{displayData.checkerData.name}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+         
+
+  <div>
+    <div class="home-header">
+
+    </div>
+
+
+    <ion-grid>
+      <ion-row justify-content-center align-items-center>
+        <ion-col col-5 (click)="gotoPhotoEdit()">
+          <img-lazy-circle src="{{displayData.checkerData.photo}}"></img-lazy-circle>
+
+         <button style="position:absolute;top:100px;left:100px;border-radius: 50px;" color="gray" ion-button> <ion-icon name="md-camera"></ion-icon></button>
+                 </ion-col>
+                 
+        <ion-col padding col-7>
+          
+          <h2 style="color:white">{{displayData.checkerData.name}}</h2>
+          <p style="color:white">{{displayData.checkerData.surname}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+      <!-- Loading Widget-->
+      <div *ngIf="initLoading" style="background-color:white;height:100%;touch-action: none;">
+        <ion-grid  >
+          <ion-row justify-content-center align-items-center style="padding-top:50%">
+            <img src="./assets/loading/loading.svg" style="width:60px"/>
+             <!-- <ion-spinner name="crescent"></ion-spinner>  -->
+            </ion-row>
+          </ion-grid>
+        </div>
+         <!-- End Loading Widget-->
+
+         <div>
+  <ion-card>
+
+  <ion-list>
+
+    <ion-list-header>
+      ข้อมูลทั่วไป
+    </ion-list-header>
+
+    <ion-item (click)="gotoPhotoEdit()">
+
+      <icon-circle icon="md-camera" color="rgb(255, 0, 234)" item-start></icon-circle>
+
+   
+ 
+      เปลี่ยนรูปภาพ
+
+    </ion-item>
+
+    <ion-item (click)="presentProfileModal('tel') ">
+
+      <icon-circle icon='ios-call' color="rgb(0, 119, 255)" item-start></icon-circle>
+      <ion-label>
+        เบอร์โทรศัพท์
+      </ion-label>
+      <ion-note item-end>
+      {{displayData.checkerData.tel}}
+      </ion-note>
+
+
+    </ion-item>
+
+    <ion-item (click)="presentProfileModal('v_id')">
+      <icon-circle icon='md-car' color="rgb(87, 104, 122)" item-start></icon-circle>
+      <ion-label>
+        ทะเบียนรถ
+      </ion-label>
+      <ion-note item-end>
+      {{displayData.checkerData.v_id}}
+      </ion-note>
+
+
+    </ion-item>
+
+    <ion-item>
+
+      <icon-circle icon='md-notifications' color="rgb(66, 194, 87)" item-start></icon-circle>
+      <ion-label>
+        เปิด/ปิด แจ้งเตือน
+      </ion-label>
+      <ion-toggle (ionChange)="toggleStatus()" [(ngModel)]="state"></ion-toggle>
+    </ion-item>
+
+    <ion-item (click)="presentProfileModal('logout')">
+      <icon-circle icon='md-log-out' color="rgb(177, 0, 9)" item-start></icon-circle>
+      ออกจากระบบ
+
+    </ion-item>
+
+
+
+  </ion-list>
+</ion-card>
+
+<ion-card>
+  <ion-list>
+
+    <ion-list-header>
+      อื่นๆ
+    </ion-list-header>
+    
+    <ion-item (click)="viewHistory()">
+      <icon-circle icon='ios-navigate-outline' color="rgb(180, 214, 85)" item-start></icon-circle>
+      ประวัติงาน
+
+    </ion-item>
+    <ion-item (click)="gotoBranch()">
+      <icon-circle icon='ios-navigate-outline' color="rgb(18, 21, 85)" item-start></icon-circle>
+      สาขามีแคปปิตอล
+
+    </ion-item>
+
+
+   
+
+
+  </ion-list>
+</ion-card>
+
+</div>
+
+
+</ion-content>
+
+

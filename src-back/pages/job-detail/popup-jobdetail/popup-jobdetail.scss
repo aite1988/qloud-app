@@ -1,0 +1,31 @@
+page-popup-jobdetail {
+
+  .scroll-content{
+   // background-color: red;
+    border-radius:20px;
+    ;
+  }
+    .home-header{
+        position:absolute;
+        background:color($colors,primary);
+        height:200px;
+        width:100%;
+        z-index:-1;
+        
+      // position: sticky;top: 0;left: 0;right: 0;z-index:-9999;
+    }
+        .profile-picture-container {
+            background-color: white;
+        }
+
+        .profile-picture {
+            border: 3px solid white;
+            margin-left:20px;
+            margin-top:10px;
+            border-radius: 100px;
+          // margin-top: -50px;
+            max-height: 100px;
+            max-width: 100px;
+        }
+
+}

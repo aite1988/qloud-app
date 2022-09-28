@@ -1,0 +1,19 @@
+page-profile {
+    .profile-picture {
+        border: 3px solid white;
+        margin-top: 0px;
+        margin-left: 0px;
+        max-height: 150px;
+        max-width: 150px;
+        border-radius: 50%;
+    }
+    .home-header{
+        position:absolute;
+        background:color($colors,primary2);
+        height:200px;
+        width:100%;
+        z-index:-1;
+        
+      // position: sticky;top: 0;left: 0;right: 0;z-index:-9999;
+    }
+}

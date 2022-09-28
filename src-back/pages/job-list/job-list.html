@@ -1,0 +1,92 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-boder>
+
+  <ion-navbar color="navbar">
+    <ion-title>งานใหม่</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-start (click)="jobList()">
+        <ion-icon name="ios-refresh-circle-outline"></ion-icon>
+        อัพเดท
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <!-- native android refresher
+  <ion-refresher ion-refresh-native refresh-timeout="3000" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="md-refresh" refreshingSpinner="crescent"></ion-refresher-content>
+  </ion-refresher>
+
+  -->
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+
+    <ion-row>
+      <img src="./assets/loading/loading.svg" style="position:absolute;left:45%;top:10px;width:10%" />
+    </ion-row>
+  </ion-refresher>
+
+  <!-- Loading Widget-->
+  <loading-widget *ngIf="initLoading" background="none" size="60" timer="1000" top="70%" heigth="100%"></loading-widget>
+
+  <!-- End Loading Widget-->
+
+  <ion-list mode="wp">
+
+    <div *ngIf="jobDat.length==0">
+      <ion-grid padding style="padding-top:200px">
+        <ion-row justify-content-center align-items-center>
+
+          <img src="./assets/icon/nodata.svg" style="width:100px;padding-bottom: 15px;" />
+
+        </ion-row>
+        <ion-row justify-content-center align-items-center>
+
+          <h2>ไม่มีข้อมูล</h2>
+
+        </ion-row>
+
+
+      </ion-grid>
+
+
+
+    </div>
+
+    <ion-list class="animated slow1 fadeIn">
+      <ion-item-sliding *ngFor="let item of jobDat" (press)="viewJobs(item.app_id)">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="./assets/imgs/logo2.png">
+          </ion-avatar>
+          <h3>{{item.cus_name}} {{item.cus_surname}}</h3>
+          <p text-wrap>{{item.appoint_place}} {{item.appoint_detail}}</p>
+          <p text-wrap>วันที่นัด {{item.appoint_date}} {{item.appoint_time}}</p>
+          <ion-badge *ngIf="item.status=='รับงานแล้ว'" item-end color="success">{{item.status}}</ion-badge>
+          <ion-badge *ngIf="item.status=='รอตอบรับ'" item-end color="danger">{{item.status}}</ion-badge>
+        </ion-item>
+        <ion-item-options side="left">
+          <button ion-button color="danger" (click)="rejectJob(item.app_id)">
+            <ion-icon name="text"></ion-icon>
+            ยกเลิก
+          </button>
+        </ion-item-options>
+        <ion-item-options side="right">
+          <button ion-button color="primary2" style="width:70px;" (click)="viewJobs(item.app_id)">
+            <ion-icon name="mail"></ion-icon>
+            ดู
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+  </ion-list>
+</ion-content>

@@ -4,68 +4,192 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+<ion-header no-border>
+  <!-- Loading Widget-->
+ 
 
-<ion-content>
-  <div class="profile-picture-container" >
-    <img src="./assets/imgs/cover-profile-3.png" style="width:100%">
+<ion-navbar color="primary1">
+  <button ion-button menuToggle>
+    <ion-icon name="custom-menu"></ion-icon>
+  </button>
+ <img class="animated slow1 fadeInUpBounce4 infinite3" src="./assets/imgs/qloudapp-mini2.png" style="width:110px"/>
+</ion-navbar>
+<ion-toolbar  [ngStyle]="CheckIsError()" mode="ios" color="primary1" style="top:-1px">
+ <ion-searchbar mode="ios"
+ placeholder="ค้นหาแอพฯ ที่นี่"
+ (keyup.enter)="searchApp(searchInput)"
+ (ionChange)="searchApp(searchInput)"
+ [(ngModel)]="searchInput"></ion-searchbar>
+ <ion-buttons mode="ios" right>
+   <button ion-button icon-end icon-only (click)="searchApp(searchInput)">
+     
+     <ion-icon name="md-search"></ion-icon>
+   </button>
+ </ion-buttons>
+</ion-toolbar>
+</ion-header>
+<ion-content (ionScroll)="isScrolling($event)" no-bounce has-bouncing="false" forceOverscroll="false" >
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+    <!-- Loading Widget-->
+    <loading-widget *ngIf="initLoading" background="none" size="60" timer="10000" top="70%" heigth="150%"></loading-widget>
 
-    <div text-center>
-      <img class="profile-picture" src="{{taxiPhoto}}">
-    </div>
-    <ion-grid>
-      <ion-row  justify-content-center align-items-center>
-    <ion-col text-center>
-      <p class="username">{{taxiName}}</p>
-      <p>{{con_id}}  
-        <ion-badge *ngIf="state=='ว่าง'" style="background-color:green" >  พร้อมรับงาน</ion-badge>
-        <ion-badge *ngIf="state=='ไม่ว่าง'" style="background-color:red" >  ปิดรับงาน</ion-badge>
-      </p> 
-    </ion-col>
-      </ion-row>
-    </ion-grid>
-
-    <ion-card>
-      <ion-grid>
-        <ion-row  justify-content-center align-items-center>
-          <div  *ngIf="state=='ว่าง'" >
-     <img tapable (press)="add()" src="./assets/icon/power_on.svg" style="width:100px;position:absolute;margin-left:40px;margin-top:43px" />
-  
-          <circle-progress
-          [percent]="symptomScore"
-          [radius]="70"
-          [outerStrokeWidth]="16"
-          [innerStrokeWidth]="0"
-          [outerStrokeColor]="'#78C000'"
-          [innerStrokeColor]="'#C7E596'"
-          [animation]="true"
-          [animationDuration]="10"
-        ></circle-progress>
-      </div>
-        <div *ngIf="state=='ไม่ว่าง'">
-          <img tapable (press)="add()"  src="./assets/icon/power_off.svg" style="width:100px;position:absolute;margin-left:40px;margin-top:43px" />
-        <circle-progress 
-        [percent]="symptomScore"
-        [radius]="70"
-        [outerStrokeWidth]="16"
-        [innerStrokeWidth]="0"
-        [outerStrokeColor]="'#DC143C'"
-        [innerStrokeColor]="'#CD5C5C'"
-        [animation]="true"
-        [animationDuration]="10"
-      ></circle-progress>
-  
-    </div>  
-    </ion-row>
+       <!-- End Loading Widget-->
+  <div *ngIf="showRec" class="profile-picture-container" >
+  <ion-list class="animated slow1 fadeIn">
     
-      </ion-grid>
-    </ion-card>
-    <ion-item></ion-item>
+
+    <div style="margin-top:10px" text-center>
+      <ion-slides mode='md'
+      slidesPerView="1.2" spaceBetween="-15"
+                [pager]="false"
+  
+          >
+      <ion-slide *ngFor="let item of appRecommend">
+        <ion-card style="position: relative;height:260px;border-radius: 30px;" (click)="gotoPage(item)">
+          <img style="height:100%;width:100%" [src]="item.photo" />
+          
+          <img class="logo"  [src]="item.logo" style="width:100px;position: absolute;top: 16px;left: 16px;border-radius: 30px;" />
+          <h1 center style="position: absolute;top: 200px;right:10px" text-wrap>{{item.name}}</h1>
+
+          </ion-card>
+  
+      </ion-slide>
+   
+    </ion-slides>
+    </div>
+   
+
+     <!-- End Loading Widget-->
+
+
+  </ion-list>
+
   </div>
 
+ 
 
- 
+  <div  style="position: sticky;top: 0;left: 0;right: 0;z-index:9999;" padding>
+
+
+   
+
+<div [ngStyle]="CheckIsError()">
+
+
+    <ion-segment  class="SwipedTabs-tabs" *ngIf="headerShow" style="background-color:white">
+      
+      <ion-segment-button  *ngFor='let tab of tabs ; let i = index ' value="IngoreMe" (click)="selectTab(i)"
+      [ngClass]='{ "SwipedTabs-activeTab" : ( this.SwipedTabsSlider  && ( this.SwipedTabsSlider.getActiveIndex() === i )) }' >
+        {{tab}}
+      </ion-segment-button>
+    </ion-segment>
+    <ion-segment  class="SwipedTabs-tabs"  *ngIf="!headerShow">
+      
+      <ion-segment-button  *ngFor='let tab of tabs ; let i = index ' value="IngoreMe" (click)="selectTab(i)"
+      [ngClass]='{ "SwipedTabs-activeTab" : ( this.SwipedTabsSlider  && ( this.SwipedTabsSlider.getActiveIndex() === i )) }' >
+        {{tab}}
+      </ion-segment-button>
+    </ion-segment>
+    
   
- 
+    <!-- here is our dynamic line  "indicator"-->
+    <div id='indicator-home' class="SwipedTabs-indicatorSegment" [ngStyle]="swipedStyle()"></div>
+  </div>
+  </div>
+
+    <ion-slides mode='md' #SwipedTabsSlider  (ionSlideDrag)="animateIndicator($event)"
+                (ionSlideWillChange)="updateIndicatorPosition()"
+                (ionSlideDidChange)="updateIndicatorPosition()"
+                (pan)="updateIndicatorPosition()"
+                [pager]="false"
+  
+          >
+          <ion-slide #tabs1>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==0">
+        
+              <ion-grid *ngIf="appListAll.length==0" padding style="padding-top:30px" >
+                <ion-row justify-content-center align-items-center>
+                  
+                    <img class="animated slow1 fadeIn" src="./assets/icon/noannounce.svg" style="width:100px;padding-bottom: 15px;" />
+        
+                  </ion-row>
+                  <ion-row justify-content-center align-items-center>
+                  
+                    <h2>ไม่พบแอพฯ</h2>
+        
+                  </ion-row>
+               
+                  
+                </ion-grid>
+
+                <ion-list>
+                  <ion-item *ngFor="let item of appListAll;let i = index" no-lines >
+                    <div item-start (click)="gotoPage(item)">
+                      <img src="{{item.logo}}" style="width:50px;border-radius: 10px;">
+                    </div>
+                    <h2 (click)="gotoPage(item)">{{item.name}}</h2>
+
+                    <button *ngIf="!item.fav" item-end color="star" ion-button clear large icon-only item-end (click)="markFav(item.id,i)">
+                 
+                      <ion-icon name="custom-star-off" color="star"></ion-icon>
+                   </button>
+                   <button *ngIf="item.fav" item-end color="star" ion-button clear large icon-only item-end (click)="removeFav(item.id,i)">
+                 
+                    <ion-icon name="custom-star-on" color="star"></ion-icon>
+                 </button>
+<!-- 
+                 <button *ngIf="!item.fav" item-end color="star" ion-button clear large icon-only item-end (click)="markFav(item.id,i)">
+                 
+                  <ion-icon name="custom-home2-outline" color="primary"></ion-icon>
+               </button>
+               <button *ngIf="item.fav" item-end color="star" ion-button clear large icon-only item-end (click)="removeFav(item.id,i)">
+             
+                <ion-icon name="custom-home2" color="primary"></ion-icon>
+             </button> -->
+                  </ion-item>
+                </ion-list>
+  </div>
+      </ion-slide>
+      <ion-slide #tabs2>
+        <div *ngIf="this.SwipedTabsSlider.getActiveIndex()>0">
+          <ion-grid  *ngIf="appListFav.length==0" padding style="padding-top:30px" >
+            <ion-row justify-content-center align-items-center>
+              
+                <img class="animated slow1 fadeIn" src="./assets/icon/nomessage.svg" style="width:100px;padding-bottom: 15px;" />
+    
+              </ion-row>
+              <ion-row justify-content-center align-items-center>
+              
+                <h2>คุณยังไม่มีแอพที่ชื่นชอบ</h2>
+    
+              </ion-row>
+           
+              
+            </ion-grid>
+
+
+            <ion-list>
+              <ion-item *ngFor="let item of appListFav;let i = index" no-lines>
+                <div  (click)="gotoPage(item)" item-start>
+                  <img src="{{item.logo}}" style="width:50px;border-radius: 10px;">
+                </div>
+                <h2  (click)="gotoPage(item)">{{item.name}}</h2>
+                <button *ngIf="!item.fav" item-end color="star" ion-button clear large icon-only item-end (click)="markFav(item.id,i)">
+             
+                  <ion-icon name="custom-star-off" color="star"></ion-icon>
+               </button>
+               <button *ngIf="item.fav" item-end color="star" ion-button clear large icon-only item-end (click)="removeFav(item.id,i)">
+             
+                <ion-icon name="custom-star-on" color="star"></ion-icon>
+             </button>
+              </ion-item>
+            </ion-list>
+        </div>
+
+      </ion-slide>
+    </ion-slides>
 
 
 

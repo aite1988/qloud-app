@@ -1,0 +1,39 @@
+
+
+<ion-content style="margin-top:100px;" [ngStyle]="popupBodyTheme()" >
+  <ion-refresher  (ionPull)="dismissDelay()">
+  </ion-refresher>
+  
+  <div *ngIf="popup_select=='confirm'" style="margin-bottom:200px;" class="animated fadeInUpSpeed">
+    <ion-item style="border-radius:30px" no-lines>
+      <icon-circle icon='md-create' color="rgb(0, 88, 43)" item-start></icon-circle>
+      <ion-label>
+        ตรวจสอบข้อมูล
+      </ion-label>
+    
+      <button class="more-button" ion-button clear icon-only large item-end (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    
+    </ion-item>
+    <ion-card>
+      <ion-title>ข้อมูลที่ยังขาด</ion-title>
+      <ion-card-content>
+        <h3 *ngFor="let item of check_result"> {{item}}</h3>
+      </ion-card-content>
+
+    </ion-card>
+    <button ion-button color="primary2" block icon-start (click)="confirmUpdate()">
+      ยืนยันส่งข้อมูล
+     </button>
+    
+
+  </div>
+
+
+
+
+
+</ion-content>
+
+

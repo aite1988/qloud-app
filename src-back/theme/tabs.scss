@@ -1,0 +1,82 @@
+
+ion-tabs {
+  //background: $app-background;
+}
+ion-item{
+
+}
+
+ion-datetime {
+ //background: $app-background2
+}
+
+.tabbar {
+  // border-radius: 20px 20px 0px 0px;
+   a.tab-button[aria-selected=true]:nth-of-type(1) {
+     .tab-button-icon {
+       transform: scale(1.2,1.2);
+   
+       color: color($colors,  tab-active);
+     }
+     color: color($colors,  tab-active);
+   }
+   a.tab-button[aria-selected=false]:nth-of-type(1) {
+     .tab-button-icon {
+       color: color($colors,secondary);
+       transform: scale(0.7,0.7);
+     }
+   }
+   a.tab-button[aria-selected=true]:nth-of-type(2) {
+     .tab-button-icon {
+       transform: scale(1.2,1.2);
+       color: color($colors,  tab-active);
+     }
+     color: color($colors,  tab-active);
+   }
+   a.tab-button[aria-selected=false]:nth-of-type(2) {
+     .tab-button-icon {
+       color: color($colors,secondary);
+       transform: scale(0.7,0.7);
+     }
+   }
+   a.tab-button[aria-selected=true]:nth-of-type(3) {
+     .tab-button-icon {
+       transform: scale(1.2,1.2);
+       color: color($colors,  tab-active);
+     }
+     color: color($colors,  tab-active);
+   }
+   a.tab-button[aria-selected=false]:nth-of-type(3) {
+     .tab-button-icon {
+       color: color($colors,secondary);
+       transform: scale(0.7,0.7);
+     }
+   }
+   a.tab-button[aria-selected=true]:nth-of-type(4) {
+     .tab-button-icon {
+       transform: scale(1.2,1.2);
+       color: color($colors,  tab-active);
+     }
+     color: color($colors,  tab-active);
+   }
+   a.tab-button[aria-selected=false]:nth-of-type(4) {
+     .tab-button-icon {
+       color: color($colors,secondary);
+       transform: scale(0.7,0.7);
+     }
+   }
+   a.tab-button[aria-selected=true]:nth-of-type(5) {
+     .tab-button-icon {
+       transform: scale(1.2,1.2);
+       color: color($colors,  tab-active);
+     }
+     color: color($colors,  tab-active);
+   }
+   a.tab-button[aria-selected=false]:nth-of-type(5) {
+     .tab-button-icon {
+       color: color($colors,secondary);
+       transform: scale(0.7,0.7);
+     }
+     
+   }
+}

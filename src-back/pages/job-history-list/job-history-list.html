@@ -1,0 +1,60 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-boder>
+
+  <ion-navbar color="navbar">
+    <ion-title>ประวัติงาน</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-start (click)="orderList()">
+        <ion-icon name="ios-refresh-circle-outline"></ion-icon>
+         อัพเดท
+      </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+
+  <loading-widget *ngIf="initLoading" background="none" size="60" timer="10000" top="70%" heigth="100%"></loading-widget>
+
+
+  <div *ngIf="jobDat.length==0&&!initLoading" class="animated slow1 fadeIn">
+    <ion-grid padding style="padding-top:200px" >
+      <ion-row justify-content-center align-items-center>
+        
+        <img src="./assets/icon/nodata.svg" style="width:100px;padding-bottom: 15px;" />
+
+        </ion-row>
+        <ion-row justify-content-center align-items-center>
+        
+          <h2>ไม่มีข้อมูล</h2>
+
+        </ion-row>
+     
+        
+      </ion-grid>
+
+    
+
+  </div>
+
+  <ion-list *ngIf="jobDat.length>0&&!initLoading" class="animated slow1 fadeIn">
+
+    <ion-item *ngFor="let item of jobDat;let i = index" (click)="viewJobs(item.app_id)">
+      <ion-thumbnail item-start>
+        <img src="{{imgLogo}}">
+      </ion-thumbnail>
+      <h2>{{item.app_id}}</h2>
+
+      <p>{{item.date_app}}</p>
+      <ion-badge item-end>      <h2>{{item.status}}</h2></ion-badge>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

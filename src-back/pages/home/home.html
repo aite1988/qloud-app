@@ -1,0 +1,125 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content no-bounce has-bouncing="false" forceOverscroll="false" >
+
+    <!-- Loading Widget-->
+    <loading-widget *ngIf="initLoading" background="none" size="60" timer="1000" top="70%" heigth="150%"></loading-widget>
+
+       <!-- End Loading Widget-->
+  <div class="profile-picture-container" >
+  <ion-list class="animated slow1 fadeIn">
+    <img src="./assets/imgs/cover.png" style="width:100%">
+
+    <div style="margin-top:-100px" text-center>
+
+      <ion-slides mode='md'
+      slidesPerView="1" spaceBetween="-15"
+                [pager]="false"
+  
+          >
+      <ion-slide>
+        <ion-card style="position: relative;height:260px">
+          <img style="height:100%;width:100%" src="./assets/card/card-bg1.jpg" />
+          
+          <img src="./assets/card/card-logo.png" style="width:100px;position: absolute;top: 16px;left: 16px;" />
+
+          <h2 center style="position: absolute;top: 200px;left: 100px;" >ชื่อ : {{displayData.name}} {{displayData.surname}}</h2>
+          <p center style="position: absolute;top: 220px;left: 100px;" >ตำแหน่ง : Checker</p>
+          </ion-card>
+  
+      </ion-slide>
+    
+    </ion-slides>
+    </div>
+   
+
+     <!-- End Loading Widget-->
+
+
+  </ion-list>
+
+  </div>
+
+ 
+
+  <div style="position: sticky;top: 0;left: 0;right: 0;z-index:9999;" padding>
+
+
+   
+
+
+    <ion-segment  class="SwipedTabs-tabs" *ngIf="headerShow" style="background-color:white">
+      
+      <ion-segment-button  *ngFor='let tab of tabs ; let i = index ' value="IngoreMe" (click)="selectTab(i)"
+      [ngClass]='{ "SwipedTabs-activeTab" : ( this.SwipedTabsSlider  && ( this.SwipedTabsSlider.getActiveIndex() === i )) }' >
+        {{tab}}
+      </ion-segment-button>
+    </ion-segment>
+    <ion-segment  class="SwipedTabs-tabs"  *ngIf="!headerShow">
+      
+      <ion-segment-button  *ngFor='let tab of tabs ; let i = index ' value="IngoreMe" (click)="selectTab(i)"
+      [ngClass]='{ "SwipedTabs-activeTab" : ( this.SwipedTabsSlider  && ( this.SwipedTabsSlider.getActiveIndex() === i )) }' >
+        {{tab}}
+      </ion-segment-button>
+    </ion-segment>
+    
+  
+    <!-- here is our dynamic line  "indicator"-->
+    <div id='indicator-home' class="SwipedTabs-indicatorSegment" [ngStyle]="swipedStyle()"></div>
+  </div>
+
+    <ion-slides mode='md' #SwipedTabsSlider  (ionSlideDrag)="animateIndicator($event)"
+                (ionSlideWillChange)="updateIndicatorPosition()"
+                (ionSlideDidChange)="updateIndicatorPosition()"
+                (pan)="updateIndicatorPosition()"
+                [pager]="false"
+  
+          >
+          <ion-slide #tabs1>
+            <div *ngIf="this.SwipedTabsSlider.getActiveIndex()==0">
+        
+              <ion-grid padding style="padding-top:30px" >
+                <ion-row justify-content-center align-items-center>
+                  
+                    <img class="animated slow1 fadeIn" src="./assets/icon/noannounce.svg" style="width:100px;padding-bottom: 15px;" />
+        
+                  </ion-row>
+                  <ion-row justify-content-center align-items-center>
+                  
+                    <h2>ไม่พบประกาศ</h2>
+        
+                  </ion-row>
+               
+                  
+                </ion-grid>
+  </div>
+      </ion-slide>
+      <ion-slide #tabs2>
+        <div *ngIf="this.SwipedTabsSlider.getActiveIndex()>0">
+          <ion-grid padding style="padding-top:30px" >
+            <ion-row justify-content-center align-items-center>
+              
+                <img class="animated slow1 fadeIn" src="./assets/icon/nomessage.svg" style="width:100px;padding-bottom: 15px;" />
+    
+              </ion-row>
+              <ion-row justify-content-center align-items-center>
+              
+                <h2>ไม่มีข้อความใหม่</h2>
+    
+              </ion-row>
+           
+              
+            </ion-grid>
+        </div>
+
+      </ion-slide>
+    </ion-slides>
+
+
+
+</ion-content>

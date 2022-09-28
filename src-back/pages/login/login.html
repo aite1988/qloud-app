@@ -1,0 +1,101 @@
+
+  <ion-header no-border>
+
+
+
+  
+
+    </ion-header>
+    <!--
+    <ion-content class="animated fadeIn login auth-page no-scroll" >
+      -->
+      <ion-content class="animated slow1 fadeIn login auth-page sidebar-menu" >
+        <div class="login-header">
+
+        </div>
+          <ion-grid>
+            <div *ngIf="state=='welcome'">
+            <ion-row >
+              <ion-col col-12>
+    
+                     <!-- Logo -->
+                     <div padding-horizontal text-center >
+                        <p text-center >
+                          <img src="./assets/imgs/logo.png" style="min-height:100px; max-width:150px;padding-top:30px" >  
+                        </p>  
+                        <h2 ion-text color="dark" class="animated slow1 infinite fadeInUpBounce4"> 
+                            <strong>Checker </strong> App
+                          </h2>
+                          <p ion-text color="dark"> 
+                            By <strong> Mee Capital</strong> 
+                          </p>
+                
+                      </div>
+                   
+                      <!-- Login form -->
+                
+    
+              </ion-col>
+            </ion-row>
+              <ion-row  class="animated slow1 fadeInUp">
+                <ion-col>
+                  <button ion-button tapable (click)="nextstate()" block>เข้าสู่ระบบ</button>
+                </ion-col>
+     
+
+               </ion-row>
+               <ion-row  class="animated slow1 fadeInUp">
+                <ion-col>
+                  <button ion-button tapable (click)="gotoRegister()" block>ลงทะเบียน</button>
+                </ion-col>
+     
+
+               </ion-row>
+              </div>
+
+              <div *ngIf="state=='login'">
+                                     <!-- Logo -->
+                                     <div text-center >
+                                      <p text-center >
+                                        <img src="./assets/imgs/logo.png" class="animated smaller" style="min-height:10px; max-width:150px;padding-top:30px" >  
+                                      </p>  
+                              
+                                    </div>
+
+              <ion-row class="animated slow1 fadeInUp" style="margin-top:-80px">
+                <ion-col>
+                    <ion-item>
+                        <ion-label class="ion-label-align" style="padding-left:10px" floating>
+                          <ion-icon name="mail" class="text-primary"></ion-icon>
+                          Username
+                        </ion-label>
+                        <ion-input  autocomplete="nope" type="text" [(ngModel)]="userData.username"   (keyup.enter)="login()"></ion-input>
+                      
+                      </ion-item>
+                      <ion-item>
+                 
+                          <ion-label class="ion-label-align" style="padding-left:10px" floating>
+                            <ion-icon name="lock" class="text-primary"></ion-icon>
+                            Password
+                          </ion-label>
+                          <ion-input type="password" [(ngModel)]="userData.password" (keyup.enter)="login()"></ion-input>
+                     
+                        </ion-item>
+                <ion-item>
+                  <button ion-button tapable large (click)="login()" block>เข้าสู่ระบบ</button>
+                </ion-item>
+                  
+    
+                </ion-col>
+
+              </ion-row>
+              </div>
+    
+    
+    
+                </ion-grid>
+    
+    
+    </ion-content>
+    
+    

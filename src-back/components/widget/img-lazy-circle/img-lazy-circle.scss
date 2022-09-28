@@ -1,0 +1,15 @@
+img-lazy-circle{
+    .img-loading{
+        height:100%;
+        width:100%;
+        position: relative;
+    }
+    .circle-picture {
+        border: 3px solid white;
+        margin-top: 0px;
+        margin-left: 0px;
+        max-height: 150px;
+        max-width: 150px;
+        border-radius: 50%;
+    }
+}

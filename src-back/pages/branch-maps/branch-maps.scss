@@ -1,0 +1,160 @@
+page-branch-maps {
+    ion-row.full_height{
+        flex:1;
+    }
+ 
+
+    ion-content.content-md[padding] .scroll-content, ion-content.content-ios[padding] .scroll-content {
+        padding: 0px !important;
+    }
+
+    .content {        
+        background-color: lightgray;
+
+        .item-md ion-avatar[item-left], .item-md ion-thumbnail[item-left], .item-md ion-avatar[item-start], .item-md ion-thumbnail[item-start],
+        .item-ios ion-avatar[item-left], .item-ios ion-thumbnail[item-left], .item-ios ion-avatar[item-start], .item-ios ion-thumbnail[item-start] {
+            margin: 0px 4px 0px 8px;
+        }
+
+        .list-md, .list-ios  {
+            margin: 0px;
+        }
+
+        .card-md, .card-ios {
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .item-md, .item-ios {
+            padding: 0px;
+        }
+
+        .item-md.item-block .item-inner, .item-ios.item-block .item-inner {
+            padding: 0px;
+        }
+
+        .label-md, .label-ios {
+            margin: 0px;
+        }
+
+        .stories-card {
+            margin-top: 0px;
+
+            p {
+                color: black;
+                text-transform: none;
+            }
+
+            button {
+                color: black;
+                font-size: 10px;
+            }
+
+            .stories-title {
+                font-weight: bold;
+                margin-left: 5px;
+            }            
+        }
+
+        .status-card {
+            .whats-on-your-mind {
+                text-align: left;
+                background-color: white;
+                text-transform: none;
+                color: gray;
+            }
+
+            .image-button {
+                color: gray;
+            }
+        }
+
+        ion-scroll[scrollX] {
+            white-space: nowrap;
+            height: 80px;
+            overflow: hidden;
+        
+            .scroll-item {
+                display: inline-block;
+                max-width: 60px;
+
+                img {
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 25px;
+                }                   
+                
+                ion-icon {
+                    margin-top: -40px;
+                    margin-left: 25px;
+                    max-height: 20px;
+                    max-width: 20px;
+                }
+            }
+        }
+        
+          /* Hide ion-content scrollbar */
+        ::-webkit-scrollbar {
+            display:none;
+        }
+
+        .post-list {
+            .post-author {
+                color: black;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            .globe-icon {
+                font-size: 14px;
+                margin-left: 5px;
+                color: gray;
+            }
+
+            ion-note {
+                color: gray;
+            }
+
+            .more-button {
+                color: gray;
+            }
+
+            .facebook-reaction-icon {
+                max-height: 20px;
+                max-width: 20px;
+            }
+
+            .reaction-count {
+                margin-left: 5px;
+            }
+
+            button {
+                ion-icon {
+                    padding: 0px;
+                }
+
+                p {
+                    margin-left: 5px;
+                }
+            }
+
+            .like-commment-share-row {
+                .like-button {
+                    color: map_get($colors, primary);
+                }
+
+                button {
+                    color: gray;
+                    text-transform: none;
+                }
+            }
+        }
+    }
+
+}
+
+.modalCss {
+top:100px;
+width:100%;
+}
+
